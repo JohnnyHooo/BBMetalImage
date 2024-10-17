@@ -603,6 +603,7 @@ public class BBMetalCamera: NSObject {
     /// Switches camera position (back to front, or front to back)
     ///
     /// - Returns: true if succeed, or false if fail
+    @available(iOS 13.0, *)
     @discardableResult
     public func switchCameraPosition() -> Bool {
         lock.wait()
@@ -615,8 +616,12 @@ public class BBMetalCamera: NSObject {
         var position: AVCaptureDevice.Position = .back
         if camera.position == .back { position = .front }
         
-        var tempDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position)
+        var tempDevice = AVCaptureDevice.default(.builtInTripleCamera, for: .video, position: position)
         
+        if tempDevice == nil {
+             tempDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position)
+        }
+
         if _canGetDepthData,
            #available(iOS 10.2, *) {
             tempDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: position)

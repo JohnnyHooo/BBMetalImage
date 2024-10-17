@@ -82,7 +82,11 @@ class MultipleImageBlendVC: UIViewController {
     }
     
     @objc private func tapMetalView(_ tap: UITapGestureRecognizer) {
-        camera.switchCameraPosition()
+        if #available(iOS 13.0, *) {
+            camera.switchCameraPosition()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     @objc private func clickFilterButton(_ button: UIButton) {

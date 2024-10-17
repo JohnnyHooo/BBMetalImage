@@ -58,19 +58,20 @@ class MainMenuVC: UIViewController {
         let recordUI = { [weak self] in
             if let self = self { self.navigationController?.pushViewController(RecordUIVC(), animated: true) }
         }
-        list = [("Static image filter", staticImageFilter),
-                ("Camera filter", cameraFilter),
-                ("Camera photo filter", cameraPhotoFilter),
-                ("Multiple camera filter", multipleCameraFilter),
-                ("Depth camera luminance", depthCameraLuminance),
-                ("Depth camera filter", depthCameraFilter),
-                ("Video filter", videoFilter),
-                ("Video filter 2", videoFilter2),
-                ("Video watermark", videoWatermark),
-                ("Camera video blend", cameraVideoBlend),
-                ("Multiple image blend", multipleImageBlend),
-                ("Multiple video blend", multipleVideoBlend),
-                ("Record UI", recordUI)]
+        list = [("静态图像滤镜", staticImageFilter),
+                ("相机滤镜", cameraFilter),
+                ("相机照片滤镜", cameraPhotoFilter),
+                ("多相机滤镜", multipleCameraFilter),
+                ("深度相机亮度", depthCameraLuminance),
+                ("深度相机滤镜", depthCameraFilter),
+                ("视频滤镜", videoFilter),
+                ("视频滤镜2", videoFilter2),
+                ("视频水印", videoWatermark),
+                ("相机视频混合", cameraVideoBlend),
+                ("多图像混合", multipleImageBlend),
+                ("多视频混合", multipleVideoBlend),
+                ("录制界面", recordUI)]
+
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.description())
         tableView.dataSource = self
